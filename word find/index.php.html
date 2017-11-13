@@ -6,7 +6,57 @@
     <link rel="stylesheet" href="css/wordsearch.min.css" />
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
+  
+  
+
+
+  
   <body>
+  
+  
+  
+  
+  
+  
+  
+  
+  <?php
+ echo "dfsdcs";
+if (!$link = mysql_connect('mysql_host', 'root', '')) {
+    echo 'Could not connect to mysql';
+    exit;
+}
+
+if (!mysql_select_db('wordgame', $link)) {
+    echo 'Could not select database';
+    exit;
+}
+
+$sql    = 'SELECT * FROM lists';
+$result = mysql_query($sql, $link);
+
+if (!$result) {
+    echo "DB Error, could not query the database\n";
+    echo 'MySQL Error: ' . mysql_error();
+    exit;
+}
+
+while ($row = mysql_fetch_assoc($result)) {
+    echo $row['topic'];
+}
+
+mysql_free_result($result);
+
+?>
+  
+  
+  
+  
+  
+  
+  
+  
+  
     <div class="wrap">
       <h1 class="logo">Word search game</h1>
       <section id="ws-area"></section>
